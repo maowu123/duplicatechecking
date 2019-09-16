@@ -1,0 +1,128 @@
+
+function check() {
+                if(form1.jgmc.value=="")
+                {
+                	form1.jgmc.focus();
+                	layer.msg('机构全称不可为空',{time:1200});
+                
+                    return false;
+                }
+                if(form1.txdz.value=="")
+                {
+                	form1.txdz.focus();
+                	layer.msg('通讯地址不可为空',{time:1200});
+                 
+                    return false;
+                }
+                if(form1.dzxx.value=="")
+                {
+                	form1.dzxx.focus();
+                	layer.msg('电子信箱不可为空',{time:1200});
+             
+                    return false;
+                }
+                if(!emailcheck())
+    			{
+    				form1.dzxx.focus();
+    				layer.msg('电子信箱格式错误',{time:1200});
+    	
+    				return false;
+    			}
+                if(form1.frdb.value=="")
+                {
+                	form1.frdb.focus();
+                	layer.msg('法人代表不可为空',{time:1200});
+                  
+                    return false;
+                }
+                if(!ybcheck())
+                {
+                	return false;
+                }
+                if(form1.lxr.value=="")
+                {
+                	form1.lxr.focus();
+                	layer.msg('联系人不可为空',{time:1200});
+          
+                    return false;
+                }
+                if(!ghcheck())
+                {
+                	return false;
+                }
+                if(form1.sj.value=="")
+                {
+                	form1.sj.focus();
+                	layer.msg('手机不可为空',{time:1200});
+              
+                    return false;
+                }
+                if(!sjcheck())
+    			{
+    				form1.sj.focus();
+    				layer.msg('手机格式错误',{time:1200});
+    		
+    				return false;
+    			}
+                return true;
+            }
+		function emailcheck()
+		{
+			//电子信箱 
+			var re=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			var result=re.test(form1.dzxx.value);
+			if(!result)
+			{
+				form1.dzxx.focus();
+				layer.msg('电子信箱格式错误',{time:1200});
+				return false;
+			}
+			return true;
+		}
+		function ghcheck()
+		{
+			//固话 至少11位数字
+			re=/^\d{11,}$/;
+			if(form1.gh.value!="")
+			{
+				result=re.test(form1.gh.value);
+				if(!result)
+				{
+					form1.gh.focus();
+					layer.msg('固话格式错误',{time:1200});
+				
+					return false;
+				}
+			}
+			return true;
+		}
+		function ybcheck()
+	    {
+	    	//邮编6位
+			re=/^\d{6}$/;
+			if(form1.yzbm.value!="")
+			{
+				result=re.test(form1.yzbm.value);
+				if(!result)
+				{
+					layer.msg('邮编格式错误',{time:1200});
+					form1.yzbm.focus();
+					return false;
+				}
+			}
+			return true;
+	    }
+		function sjcheck()
+		{
+			//手机号 11位
+			re=/^\d{11}$/;
+			result=re.test(form1.sj.value);
+			if(!result)
+			{
+				form1.sj.focus();
+				layer.msg('手机格式错误',{time:1200});
+		
+				return false;
+			}
+			return true;
+		}
